@@ -1,105 +1,26 @@
 "--------------------
 " Use Vundle to manage bundles
 "--------------------
-set nocompatible	" be iMproved
-filetype off		" required!
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-
-Bundle 'gmarik/vundle'
-source ~/.vim/vimrc.vundle 
 
 "--------------------
 " General Settings
 "--------------------
-set bs=indent,eol,start	" allow backspacing over everything in insert mode
-set history=100		" keep 100 lines of command line history
-set ruler			" show the cursor position all the time
-set ar				" auto read when file is changed from outside
-set nu				" show line numbers
-
-filetype on			" Enable filetype detection
-filetype indent on	" Enable filetype-specific indenting
-filetype plugin on	" Enable filetype-specific plugins
-
-" auto reload vimrc when editing it
-autocmd! bufwritepost .vimrc source ~/.vimrc
-
-syntax on			" syntax highlight
-set hlsearch		" search highlighting
-
-" terminal color settings
-if has("gui_running")	" GUI color and font settings
-	set guifont=Courier:h18
-	set background=dark 
-	set t_Co=256		" 256 color mode
-	set cursorline	" highlight current line
-	highlight CursorLine  guibg=#003853 ctermbg=24  gui=none cterm=none
-	colors moria
-else
-	colors evening
-endif
-
-set clipboard=unnamed	" yank to the system register (*) by default
-set showmatch		" Cursor shows matching ) and }
-set showmode		" Show current mode
-set wildchar=<TAB>	" start wild expansion in the command line using <TAB>
-set wildmenu		" wild char completion menu
-
-" ignore these files while expanding wild chars
-set wildignore+=.svn,CVS,.git 
-set wildignore+=*.o,*.a,*.class,*.mo,*.la,*.so,*.lo,*.la,*.obj,*.pyc
-set wildignore+=*.exe,*.zip,*.jpg,*.png,*.gif,*.jpeg 
-
-set autoindent		" auto indentation
-set incsearch		" incremental search
-set backup			" save backup files
-set backupdir=~/.vim/bak	" where to put backup file
-set dir=~/.vim/tmp	" tell vim where to put swap files
-set copyindent		" copy the previous indentation on autoindenting
-set ignorecase		" ignore case when searching
-set smartcase		" ignore case if search pattern is all lowercase,case-sensitive otherwise
-set nosmarttab		" insert tabs on the start of a line according to context
-
-" disable sound on errors
-set noerrorbells visualbell t_vb=
-set tm=500
-
-" TAB setting
-set noexpandtab		"DO-NOT replace <TAB> with spaces
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-autocmd FileType yaml set expandtab
-
-" FOLDING
-set foldenable
-set foldmethod=marker
-set foldlevel=0
-set foldcolumn=0
-
-" status line
-set laststatus=2
-set statusline=\ %{HasPaste()}%<%-15.25(%f%)%m%r%h\ %w\ \ 
-set statusline+=\ \ \ [%{&ff}/%Y] 
-set statusline+=\ \ \ %<%20.30(%{hostname()}:%{CurDir()}%)\ 
-set statusline+=%=%-10.(%l,%c%V%)\ %p%%/%L
 
 fun! CurDir()
-	let curdir = substitute(getcwd(), $HOME, "~", "")
-	return curdir
+  let curdir = substitute(getcwd(), $HOME, "~", "")
+  return curdir
 endfun
 
 fun! HasPaste()
-	if &paste
-		return '[PASTE]'
-	else
-		return ''
-	endif
+  if &paste
+    return '[PASTE]'
+  else
+    return ''
+  endif
 endfun
 
 " C/C++ specific settings
-autocmd FileType c,cpp,cc  set cindent		" comments=sr:/*,mb:*,el:*/,:// cino=>s,e0,n0,f0,{0,}0,^-1s,:0,=s,g0,h1s,p2,t0,+2,(2,)20,*30
+autocmd FileType c,cpp,cc  set cindent    " comments=sr:/*,mb:*,el:*/,:// cino=>s,e0,n0,f0,{0,}0,^-1s,:0,=s,g0,h1s,p2,t0,+2,(2,)20,*30
 
 "Restore cursor to file position in previous editing session
 set viminfo='10,\"100,:20,%,n~/.viminfo
@@ -145,8 +66,8 @@ map <C-K> <C-W>k<C-W>_
 nmap <c-h> <c-w>h<c-w><bar>
 " move to and maximize the right split  
 nmap <c-l> <c-w>l<c-w><bar>
-set wmw=0			" set the min width of a window to 0 so we can maximize others 
-set wmh=0			" set the min height of a window to 0 so we can maximize others
+set wmw=0      " set the min width of a window to 0 so we can maximize others 
+set wmh=0      " set the min height of a window to 0 so we can maximize others
 
 " --- move to splitted windok
 map <leader>h :wincmd h<CR> 
@@ -200,11 +121,11 @@ map <C-[> <ESC>:po<CR>
 
 map <leader>g :call IncludeGuard()<CR>
 fun! IncludeGuard()
-	let basename = substitute(bufname(""), '.*/', '', '')
-	let guard = '_' . substitute(toupper(basename), '\.', '_', "H") . '_'
-	call append(0, "#ifndef " . guard)
-	call append(1, "#define " . guard)
-	call append(line("$"), "#endif /* " . guard . " */")
+  let basename = substitute(bufname(""), '.*/', '', '')
+  let guard = '_' . substitute(toupper(basename), '\.', '_', "H") . '_'
+  call append(0, "#ifndef " . guard)
+  call append(1, "#define " . guard)
+  call append(line("$"), "#endif /* " . guard . " */")
 endfun
 
 "---------------------------------------------
@@ -221,12 +142,12 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 "autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 " use syntax complete if nothing else available
 if has("autocmd") && exists("+omnifunc")
-	autocmd Filetype *
-				\ if &omnifunc == "" |
-				\   setlocal omnifunc=syntaxcomplete#Complete |
-				\ endif
+  autocmd Filetype *
+        \ if &omnifunc == "" |
+        \   setlocal omnifunc=syntaxcomplete#Complete |
+        \ endif
 endif
-set cot-=preview	"disable doc preview in omnicomplete
+set cot-=preview  "disable doc preview in omnicomplete
 
 "---------------------------------------------
 " for PHP programming
@@ -239,8 +160,8 @@ autocmd FileType php set errorformat=%m\ in\ %f\ on\ line\ %l
 "---------------------------------------------
 autocmd FileType css setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 " make CSS omnicompletion work for SASS and SCSS
-autocmd BufNewFile,BufRead *.scss			set ft=scss.css
-autocmd BufNewFile,BufRead *.sass			set ft=sass.css
+autocmd BufNewFile,BufRead *.scss      set ft=scss.css
+autocmd BufNewFile,BufRead *.sass      set ft=sass.css
 
 "---------------------------------------------
 " for edit HTML
@@ -286,22 +207,22 @@ hi StatusLineNC ctermfg=darkblue ctermbg=gray
 "--------------------------------------------------------------------------- 
 " --- AutoClose - Inserts matching bracket, paren, brace or quote 
 " fixed the arrow key problems caused by AutoClose
-if !has("gui_running")	
-	set term=linux
-	syntax on
-	map OA k
-	map OB j
-	map OC l
-	map OD h
+if !has("gui_running")  
+  set term=linux
+  syntax on
+  map OA k
+  map OB j
+  map OC l
+  map OD h
 
-	imap OA <ESC>ki
-	imap OB <ESC>ji
-	imap OC <ESC>li
-	imap OD <ESC>hi
+  imap OA <ESC>ki
+  imap OB <ESC>ji
+  imap OC <ESC>li
+  imap OD <ESC>hi
 endif
 
 " --- BufExplorer
-let g:bufExplorerDetailedHelp = 0		" Do not show detailed help.
+let g:bufExplorerDetailedHelp = 0    " Do not show detailed help.
 noremap <leader>b :BufExplorer<CR>
 
 " --- TagBar
@@ -314,9 +235,9 @@ let g:tagbar_autofocus = 1
 let g:tagbar_width = 30
 " markdown support
 let g:tagbar_type_markdown = {
-			\ 'ctagstype': 'markdown',
-			\ 'kinds': [ 'h:Heading_L1', 'i:Heading_L2', 'k:Heading_L3' ]
-			\ }
+      \ 'ctagstype': 'markdown',
+      \ 'kinds': [ 'h:Heading_L1', 'i:Heading_L2', 'k:Heading_L3' ]
+      \ }
 " --- NERDTree
 nnoremap <silent> <F3> :NERDTreeToggle<CR>
 nnoremap <leader>n :NERDTreeToggle<CR>
@@ -335,7 +256,7 @@ nnoremap <silent> <F2> :YRShow<CR>
 nnoremap <leader>y :YRShow<CR>
 
 " --- EasyMotion
-let g:EasyMotion_leader_key = '<Leader><Leader>'	" default is <Leader>w
+let g:EasyMotion_leader_key = '<Leader><Leader>'  " default is <Leader>w
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
 
@@ -355,13 +276,13 @@ let g:neocomplcache_min_syntax_length = 2
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 " Define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = {
-			\ 'default': '',
-			\ 'vimshell': '~/.vimshell_hist',
-			\ 'scheme': '~/.gosh_completions'
-			\ }
+      \ 'default': '',
+      \ 'vimshell': '~/.vimshell_hist',
+      \ 'scheme': '~/.gosh_completions'
+      \ }
 " Define keyword.
 if !exists('g:neocomplcache_keyword_patterns')
-	let g:neocomplcache_keyword_patterns = {}
+  let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 " Plugin key-mappings.
@@ -372,7 +293,7 @@ inoremap <expr><C-l>     neocomplcache#complete_common_string()
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
 fun! s:my_cr_func()
-	return pumvisible() ? neocomplcache#smart_close_popup() : "\<CR>"
+  return pumvisible() ? neocomplcache#smart_close_popup() : "\<CR>"
 endfun
 "inoremap <expr><CR>  neocomplcache#smart_close_popup()."\<CR>"
 inoremap <silent> <CR> <C-r>=<SID>my_cr_func()<CR>
@@ -385,7 +306,7 @@ inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
 " Enable heavy omni completion.
 if !exists('g:neocomplcache_omni_patterns')
-	let g:neocomplcache_omni_patterns = {}
+  let g:neocomplcache_omni_patterns = {}
 endif
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
@@ -401,7 +322,7 @@ imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" 
 smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 " For snippet_complete marker.
 if has('conceal')
-	set conceallevel=2 concealcursor=i
+  set conceallevel=2 concealcursor=i
 endif
 
 " --- vim-javascript
@@ -424,10 +345,10 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_root_markers = ['protected','CVS','tags']
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = {
-			\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-			\ 'file': '\v\.(exe|so|dll)$',
-			\ 'link': 'some_bad_symbolic_links',
-			\ }
+      \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+      \ 'file': '\v\.(exe|so|dll)$',
+      \ 'link': 'some_bad_symbolic_links',
+      \ }
 
 " --- vim-easytags
 nnoremap <leader>ut :UpdateTags!<CR>
