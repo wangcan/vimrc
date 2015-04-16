@@ -8,6 +8,8 @@
 " NOTE: comments after Bundle command are not allowed..
  
 " general 
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter.git'
 
 "--------------------
 " for php
