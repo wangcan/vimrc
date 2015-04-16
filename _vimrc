@@ -3,6 +3,13 @@
 "--------------------
 set nocompatible  " be iMproved
 set helplang=cn  " point the language of help
+set encoding=utf-8  
+set fileencoding=utf-8  
+set fileencodings=utf-8,gbk,latin1 "
+
+set termencoding=chinese  
+language message zh_CN.UTF-8
+
 filetype off    " required!
 set rtp+=$VIM/vimfiles/bundle/Vundle.vim/
 let path='$VIM/vimfiles/bundle/'
@@ -83,11 +90,15 @@ set foldlevel=0
 set foldcolumn=0
 
 " status line
+"set laststatus=2
+"set statusline=\ %{HasPaste()}%<%-15.25(%f%)%m%r%h\ %w\ \ 
+"set statusline+=\ \ \ [%{&ff}/%Y] 
+"set statusline+=\ \ \ %<%20.30(%{hostname()}:%{CurDir()}%)\ 
+"set statusline+=%=%-10.(%l,%c%V%)\ %p%%/%L
+" vim-powerline
 set laststatus=2
-set statusline=\ %{HasPaste()}%<%-15.25(%f%)%m%r%h\ %w\ \ 
-set statusline+=\ \ \ [%{&ff}/%Y] 
-set statusline+=\ \ \ %<%20.30(%{hostname()}:%{CurDir()}%)\ 
-set statusline+=%=%-10.(%l,%c%V%)\ %p%%/%L
+set t_Co=256
+let g:Powerline_symbols='unicode'
 
 fun! CurDir()
   let curdir = substitute(getcwd(), $HOME, "~", "") 
@@ -103,8 +114,40 @@ fun! HasPaste()
 endfun
 
 " --- NERDTree
-nnoremap <silent> <F3> :NERDTreeToggle<CR>
-nnoremap <leader>n :NERDTreeToggle<CR>
+"nnoremap <silent> <F3> :NERDTreeToggle<CR>
+"nnoremap <leader>n :NERDTreeToggle<CR>
 " Close vim if the only window left open is the NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" NERDTree
+map <F10> :NERDTreeToggle<CR>
+let NERDSpaceDelims=1       " 让注释符与语句之间留一个空格
+let NERDCompactSexyComs=1   " 多行注释时样子更好看
+let g:NERDTree_title = "NERDTree"
+function! NERDTree_Start()
+  exe 'NERDTree'
+endfunction
+function! NERDTree_IsValid()
+  return 1
+endfunction
+ 
+" minibufexpl  
+let g:miniBufExplMapWindowNavVim = 1   
+let g:miniBufExplMapWindowNavArrows = 1   
+let g:miniBufExplMapCTabSwitchBufs = 1   
+let g:miniBufExplModSelTarget = 1   
+"let g:miniBufExplorerMoreThanOne=1         "自动打开  
+
+" winmanager   
+let g:winManagerWindowLayout='NERDTree'  
+"let g:winManagerWindowLayout='NERDTree|TagList,BufExplorer'  
+"let g:winManagerWindowLayout = 'FileExplorer|TagList'  
+"let g:winManagerWindowLayout = 'FileExplorer'  
+let g:winManagerWidth = 35  
+let g:defaultExplorer = 0  
+let g:AutoOpenWinManager = 1
+"nmap wm :WMToggle<cr>:q<cr>  
+nmap <silent> wm :if IsWinManagerVisible() <BAR> WMToggle<CR> <BAR> else <BAR> WMToggle<CR>:q<CR> endif <CR>
+"nmap <C-W><C-F> :FirstExplorerWindow<cr>  
+"nmap <C-W><C-B> :BottomExplorerWindow<cr>  
+"autocmd BufWinEnter \[Buf\ List\] setl nonumber 

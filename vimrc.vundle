@@ -8,8 +8,12 @@
 " NOTE: comments after Bundle command are not allowed..
  
 " general 
+Bundle 'thisivan/vim-bufexplorer' 
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter.git'
+Bundle 'minibufexpl.vim'
+Bundle 'winmanager'
+Bundle 'https://github.com/Lokaltog/vim-powerline.git'
 
 "--------------------
 " for php
