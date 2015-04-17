@@ -1,5 +1,5 @@
 "--------------------
-" Use Vundle to manage bundles
+" Base settings
 "--------------------
 set nocompatible  " be iMproved
 set helplang=cn  " point the language of help
@@ -10,6 +10,9 @@ set fileencodings=utf-8,gbk,latin1 "
 set termencoding=chinese  
 language message zh_CN.UTF-8
 
+"--------------------
+" Use Vundle to manage bundles
+"--------------------
 filetype off    " required!
 set rtp+=$VIM/vimfiles/bundle/Vundle.vim/
 let path='$VIM/vimfiles/bundle/'
@@ -113,6 +116,33 @@ fun! HasPaste()
   endif
 endfun
 
+" taglist   
+let Tlist_Ctags_Cmd = 'c:/Vim/vimfiles/bin/ctags.exe' " 指定ctags程序的位置  
+let Tlist_Auto_Highlight_Tag = 1
+let Tlist_Auto_Open = 0
+let Tlist_Auto_Update = 1
+let Tlist_Close_On_Select = 0
+let Tlist_Compart_Format = 1        " 压缩方式  
+let Tlist_Display_Prototype = 0
+let Tlist_Display_Tag_Scope = 1
+let Tlist_Enable_Fold_Column = 0    " 不要显示折叠树 (鼠标可以点开)  
+let Tlist_Exit_OnlyWindow = 1      " 如果只有一个buffer，kill窗口也kill掉buffer  
+let Tlist_File_Fold_Auto_Close = 0  " 不要关闭其他文件的tags  
+let Tlist_GainFocus_On_ToggleOpen = 1
+let Tlist_Hightlight_Tag_On_BufEnter = 1
+let Tlist_Inc_Winwidth = 0
+let Tlist_Max_Submenu_Items = 1
+let Tlist_Max_Tag_Length = 30
+let Tlist_Process_File_Always = 0
+let Tlist_Show_Menu = 0
+let Tlist_Show_One_File = 0
+let Tlist_Sort_Type = "order"
+let Tlist_Use_Horiz_Window = 0
+let Tlist_Use_Right_Window = 0      " 在左侧显示窗口  
+let Tlist_WinWidth = 40
+let Tlist_php_settings = 'php;c:class;i:interfaces;d:constant;f:function'
+nmap <silent> <leader>tl :Tlist<cr>  
+
 " --- NERDTree
 "nnoremap <silent> <F3> :NERDTreeToggle<CR>
 "nnoremap <leader>n :NERDTreeToggle<CR>
@@ -143,7 +173,7 @@ let g:winManagerWindowLayout='NERDTree'
 "let g:winManagerWindowLayout='NERDTree|TagList,BufExplorer'  
 "let g:winManagerWindowLayout = 'FileExplorer|TagList'  
 "let g:winManagerWindowLayout = 'FileExplorer'  
-let g:winManagerWidth = 35  
+let g:winManagerWidth = 30
 let g:defaultExplorer = 0  
 let g:AutoOpenWinManager = 1
 "nmap wm :WMToggle<cr>:q<cr>  
@@ -151,3 +181,4 @@ nmap <silent> wm :if IsWinManagerVisible() <BAR> WMToggle<CR> <BAR> else <BAR> W
 "nmap <C-W><C-F> :FirstExplorerWindow<cr>  
 "nmap <C-W><C-B> :BottomExplorerWindow<cr>  
 "autocmd BufWinEnter \[Buf\ List\] setl nonumber 
+
