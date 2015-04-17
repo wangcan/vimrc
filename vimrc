@@ -1,10 +1,10 @@
-"--------------------
+ï»¿"--------------------
 " Base settings
 "--------------------
 set nocompatible  " be iMproved
 set helplang=cn  " point the language of help
-set encoding=utf-8  
-set fileencoding=utf-8  
+set encoding=utf-8
+set fileencoding=utf-8
 set fileencodings=utf-8,gbk,latin1 "
 
 set termencoding=chinese  
@@ -105,7 +105,7 @@ set foldcolumn=0
 "set statusline+=%=%-10.(%l,%c%V%)\ %p%%/%L
 " vim-powerline
 set laststatus=2
-set t_Co=256
+"set t_Co=256
 let g:Powerline_symbols='unicode'
 
 fun! CurDir()
@@ -122,17 +122,17 @@ fun! HasPaste()
 endfun
 
 " taglist   
-let Tlist_Ctags_Cmd = 'c:/Vim/vimfiles/bin/ctags.exe' " Ö¸¶¨ctags³ÌĞòµÄÎ»ÖÃ  
+let Tlist_Ctags_Cmd = 'c:/Vim/vimfiles/bin/ctags.exe' " æŒ‡å®šctagsç¨‹åºçš„ä½ç½®  
 let Tlist_Auto_Highlight_Tag = 1
 let Tlist_Auto_Open = 0
 let Tlist_Auto_Update = 1
 let Tlist_Close_On_Select = 0
-let Tlist_Compart_Format = 1        " Ñ¹Ëõ·½Ê½  
+let Tlist_Compart_Format = 1        " å‹ç¼©æ–¹å¼  
 let Tlist_Display_Prototype = 0
 let Tlist_Display_Tag_Scope = 1
-let Tlist_Enable_Fold_Column = 0    " ²»ÒªÏÔÊ¾ÕÛµşÊ÷ (Êó±ê¿ÉÒÔµã¿ª)  
-let Tlist_Exit_OnlyWindow = 1      " Èç¹ûÖ»ÓĞÒ»¸öbuffer£¬kill´°¿ÚÒ²killµôbuffer  
-let Tlist_File_Fold_Auto_Close = 0  " ²»Òª¹Ø±ÕÆäËûÎÄ¼şµÄtags  
+let Tlist_Enable_Fold_Column = 0    " ä¸è¦æ˜¾ç¤ºæŠ˜å æ ‘ (é¼ æ ‡å¯ä»¥ç‚¹å¼€)  
+let Tlist_Exit_OnlyWindow = 1      " å¦‚æœåªæœ‰ä¸€ä¸ªbufferï¼Œkillçª—å£ä¹Ÿkillæ‰buffer  
+let Tlist_File_Fold_Auto_Close = 0  " ä¸è¦å…³é—­å…¶ä»–æ–‡ä»¶çš„tags  
 let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Hightlight_Tag_On_BufEnter = 1
 let Tlist_Inc_Winwidth = 0
@@ -143,7 +143,7 @@ let Tlist_Show_Menu = 0
 let Tlist_Show_One_File = 0
 let Tlist_Sort_Type = "order"
 let Tlist_Use_Horiz_Window = 0
-let Tlist_Use_Right_Window = 0      " ÔÚ×ó²àÏÔÊ¾´°¿Ú  
+let Tlist_Use_Right_Window = 0      " åœ¨å·¦ä¾§æ˜¾ç¤ºçª—å£  
 let Tlist_WinWidth = 40
 let Tlist_php_settings = 'php;c:class;i:interfaces;d:constant;f:function'
 nmap <silent> <leader>tl :Tlist<cr>  
@@ -156,8 +156,8 @@ nmap <silent> <leader>tl :Tlist<cr>
 
 " NERDTree
 map <F10> :NERDTreeToggle<CR>
-let NERDSpaceDelims=1       " ÈÃ×¢ÊÍ·ûÓëÓï¾äÖ®¼äÁôÒ»¸ö¿Õ¸ñ
-let NERDCompactSexyComs=1   " ¶àĞĞ×¢ÊÍÊ±Ñù×Ó¸üºÃ¿´
+let NERDSpaceDelims=1       " è®©æ³¨é‡Šç¬¦ä¸è¯­å¥ä¹‹é—´ç•™ä¸€ä¸ªç©ºæ ¼
+let NERDCompactSexyComs=1   " å¤šè¡Œæ³¨é‡Šæ—¶æ ·å­æ›´å¥½çœ‹
 let g:NERDTree_title = "NERDTree"
 function! NERDTree_Start()
   exe 'NERDTree'
@@ -171,7 +171,7 @@ let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1   
 let g:miniBufExplMapCTabSwitchBufs = 1   
 let g:miniBufExplModSelTarget = 1   
-"let g:miniBufExplorerMoreThanOne=1         "×Ô¶¯´ò¿ª  
+"let g:miniBufExplorerMoreThanOne=1         "è‡ªåŠ¨æ‰“å¼€  
 
 " winmanager   
 let g:winManagerWindowLayout='NERDTree'  
