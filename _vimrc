@@ -3,8 +3,8 @@
 "--------------------
 set nocompatible  " be iMproved
 set helplang=cn  " point the language of help
-set encoding=utf-8
-set fileencoding=utf-8
+set encoding=utf-8  
+set fileencoding=utf-8  
 set fileencodings=utf-8,gbk,latin1 "
 
 set termencoding=chinese  
@@ -14,17 +14,14 @@ language message zh_CN.UTF-8
 " Use Vundle to manage bundles
 "--------------------
 filetype off    " required!
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#rc()
-"set rtp+=$VIM/vimfiles/bundle/Vundle.vim/
-"let path='$VIM/vimfiles/bundle/'
-"call vundle#begin(path)
+set rtp+=$VIM/vimfiles/bundle/Vundle.vim/
+let path='$VIM/vimfiles/bundle/'
+call vundle#begin(path)
 
 Bundle 'gmarik/Vundle.vim'
-"source $VIM/vimfiles/vimrc.vundle
-source ~/.vim/vimrc.vundle 
+source $VIM/vimfiles/vimrc.vundle
 
-"call vundle#end()
+call vundle#end()
 
 "--------------------
 " General Settings
@@ -71,10 +68,8 @@ set wildignore+=*.exe,*.zip,*.jpg,*.png,*.gif,*.jpeg
 set autoindent    " auto indentation
 set incsearch    " incremental search
 set backup      " save backup files
-"set backupdir=$VIM/vimfiles/bak  " where to put backup file
-"set dir=$VIM/vimfiles/tmp  " tell vim where to put swap files
-set backupdir=~/.vim/bak  " where to put backup file
-set dir=~/.vim/tmp  " tell vim where to put swap files
+set backupdir=$VIM/vimfiles/bak  " where to put backup file
+set dir=$VIM/vimfiles/tmp  " tell vim where to put swap files
 set copyindent    " copy the previous indentation on autoindenting
 set ignorecase    " ignore case when searching
 set smartcase    " ignore case if search pattern is all lowercase,case-sensitive otherwise
@@ -105,7 +100,7 @@ set foldcolumn=0
 "set statusline+=%=%-10.(%l,%c%V%)\ %p%%/%L
 " vim-powerline
 set laststatus=2
-"set t_Co=256
+set t_Co=256
 let g:Powerline_symbols='unicode'
 
 fun! CurDir()
