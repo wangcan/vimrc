@@ -1,0 +1,153 @@
+set autochdir                      " 自动切换当前目录为当前文件所在的目录
+set autoindent
+set backspace=indent,eol,start     " 不设定在插入状态无法用退格键和 Delete 键删除回车符
+set backupcopy=yes                 " 设置备份时的行为为覆盖
+"set cursorline                    " 突出显示当前行
+set cmdheight=1                    " 设定命令行的行数为 1
+set encoding=utf-8  
+set fileencoding=utf-8  
+set fileencodings=utf-8,gbk,latin1 "
+set helplang=cn
+
+set termencoding=chinese  
+language message zh_CN.UTF-8
+
+set hidden                         " 允许在有未保存的修改时切换缓冲区，此时的修改由 vim 负责保存
+set history=300                    " history文件中需要记录的行数
+set hlsearch                       " 搜索时高亮显示被找到的文本
+set ignorecase smartcase           " 搜索时忽略大小写，但在有一个或以上大写字母时仍保持对大小写敏感
+set imcmdline    
+set incsearch                      " 输入搜索内容时就显示搜索结果
+set iskeyword=@,48-57,_,192-255    " 48-57 -> 0-9; 192-255 可显示的拉丁字符
+"set iskeyword+=-
+set magic                          " 设置魔术
+set matchtime=2                    " 短暂跳转到匹配括号的时间
+set nobackup                       " 覆盖文件时不备份
+set noswapfile
+set nocompatible                   " 关闭对vi键盘模式的兼容
+set noerrorbells                   " 关闭错误信息响铃
+set novisualbell                   " 关闭使用可视响铃代替呼叫
+set nowrapscan                     " 禁止在搜索到文件两端时重新搜索
+set number                         " 显示行号
+set ruler                          " 打开状态栏标尺
+"set scrolloff=5
+set showcmd
+set showmatch                      " 插入括号时，短暂地跳转到匹配的对应括号
+set smartindent                    " 开启新行时使用智能自动缩进
+set t_vb=                          " 置空错误铃声的终端代码
+set termencoding=utf-8  
+"set viminfo+=!                    " 保存全局变量
+"set whichwrap=b,s,<,>
+set expandtab
+set shiftwidth=2
+
+syntax enable
+syntax on
+
+filetype off
+set rtp+=$VIM/vimfiles/bundle/Vundle.vim/
+let path='$VIM/vimfiles/bundle'
+"set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin(path)
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+
+" plugin from http://vim-scripts.org/vim/scripts.html
+Plugin 'L9'
+
+"PluginClean 'cleanphp'
+Plugin 'php.vim-for-php5'
+
+Bundle 'The-NERD-tree'
+Bundle 'winmanager'
+" install ctags http://sourceforge.net/projects/ctags/files/
+Bundle 'taglist.vim'
+Bundle 'minibufexpl.vim'
+Bundle 'bufexplorer.zip'
+
+Bundle 'https://github.com/Lokaltog/vim-powerline.git'
+
+" Git plugin not hosted on GitHub
+Plugin 'git://git.wincent.com/command-t.git'
+
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+
+call vundle#end()            " required
+filetype plugin indent on    " required 开启插件
+
+
+au FileType html,python,vim,javascript setl shiftwidth=2
+au FileType html,python,vim,javascript setl tabstop=2
+au FileType java,php setl shiftwidth=4
+au FileType java,php setl tabstop=4
+
+" taglist   
+let Tlist_Auto_Highlight_Tag = 1
+let Tlist_Auto_Open = 0
+let Tlist_Auto_Update = 1
+let Tlist_Close_On_Select = 0
+let Tlist_Compart_Format = 1        " 压缩方式  
+let Tlist_Display_Prototype = 0
+let Tlist_Display_Tag_Scope = 1
+let Tlist_Enable_Fold_Column = 0    " 不要显示折叠树 (鼠标可以点开)  
+let Tlist_Exit_OnlyWindow = 1      " 如果只有一个buffer，kill窗口也kill掉buffer  
+let Tlist_File_Fold_Auto_Close = 0  " 不要关闭其他文件的tags  
+let Tlist_GainFocus_On_ToggleOpen = 1
+let Tlist_Hightlight_Tag_On_BufEnter = 1
+let Tlist_Inc_Winwidth = 0
+let Tlist_Max_Submenu_Items = 1
+let Tlist_Max_Tag_Length = 30
+let Tlist_Process_File_Always = 0
+let Tlist_Show_Menu = 0
+let Tlist_Show_One_File = 0
+let Tlist_Sort_Type = "order"
+let Tlist_Use_Horiz_Window = 0
+let Tlist_Use_Right_Window = 0      " 在左侧显示窗口  
+let Tlist_WinWidth = 40
+let Tlist_php_settings = 'php;c:class;i:interfaces;d:constant;f:function'
+nmap <silent> <leader>tl :Tlist<cr>  
+  
+" NERDTree
+map <F10> :NERDTreeToggle<CR>
+let NERDSpaceDelims=1       " 让注释符与语句之间留一个空格
+let NERDCompactSexyComs=1   " 多行注释时样子更好看
+let g:NERDTree_title = "NERDTree"
+function! NERDTree_Start()
+  exe 'NERDTree'
+endfunction
+function! NERDTree_IsValid()
+  return 1
+endfunction
+ 
+" minibufexpl  
+let g:miniBufExplMapWindowNavVim = 1   
+let g:miniBufExplMapWindowNavArrows = 1   
+let g:miniBufExplMapCTabSwitchBufs = 1   
+let g:miniBufExplModSelTarget = 1   
+"let g:miniBufExplorerMoreThanOne=1         "自动打开  
+
+" winmanager   
+let g:winManagerWindowLayout='NERDTree'  
+"let g:winManagerWindowLayout='NERDTree|TagList,BufExplorer'  
+"let g:winManagerWindowLayout = 'FileExplorer|TagList'  
+"let g:winManagerWindowLayout = 'FileExplorer'  
+let g:winManagerWidth = 35  
+let g:defaultExplorer = 0  
+let g:AutoOpenWinManager = 1
+"nmap wm :WMToggle<cr>:q<cr>  
+nmap <silent> wm :if IsWinManagerVisible() <BAR> WMToggle<CR> <BAR> else <BAR> WMToggle<CR>:q<CR> endif <CR>
+"nmap <C-W><C-F> :FirstExplorerWindow<cr>  
+"nmap <C-W><C-B> :BottomExplorerWindow<cr>  
+"autocmd BufWinEnter \[Buf\ List\] setl nonumber  
+
+" vim-powerline
+set laststatus=2
+set t_Co=256
+let g:Powerline_symbols='unicode'
+"set encoding=utf8
+
+colorscheme fruit
