@@ -182,3 +182,17 @@ nmap <silent> wm :if IsWinManagerVisible() <BAR> WMToggle<CR> <BAR> else <BAR> W
 "nmap <C-W><C-B> :BottomExplorerWindow<cr>  
 "autocmd BufWinEnter \[Buf\ List\] setl nonumber 
 
+function AddLineNumbers()
+    :%s/^/  / "每一行的行首添加一个TAB字符
+    :$ "到文件的末行
+    :let end=line(".") "函数line的功能是取得指定行的行号，此处参数'.'表示当前行
+    :1 "到文件的首行
+    :let num=1 "计数器
+    :while num<=end
+    :let line=getline(".") "取当前行的内容
+    :let line=substitute(line,$,num,"") "在变量 LINE 的前面置入行号
+    :call setline(".",line) "将变量 LINE 的内容写回当前行
+    :+ "下移一行
+    :let num=num+1 "计数器加一
+    :endwhile
+endfunction
