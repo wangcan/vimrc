@@ -5,9 +5,10 @@ set nocompatible  " be iMproved
 set helplang=cn  " point the language of help
 set encoding=utf-8
 set fileencoding=utf-8
-set fileencodings=utf-8,gbk,latin1 "
+"set fileencodings=utf-8,gbk,latin1 "
+set fileencodings=utf-8,gb2312,gbk,gb18030
 
-set termencoding=chinese  
+set termencoding=utf-8
 language message zh_CN.UTF-8
 
 "--------------------
@@ -171,7 +172,7 @@ let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1   
 let g:miniBufExplMapCTabSwitchBufs = 1   
 let g:miniBufExplModSelTarget = 1   
-let g:miniBufExplorerMoreThanOne=1         "自动打开  
+"let g:miniBufExplorerMoreThanOne=1         "自动打开  
 
 " winmanager   
 let g:winManagerWindowLayout='NERDTree'  
