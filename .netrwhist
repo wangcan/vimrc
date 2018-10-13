@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/data/htmlwww/acanstudio/commandShell/application_shells'
+let g:netrw_dirhist_2='/data/htmlwww/lightFrame/downinfo/lsm/css'
+let g:netrw_dirhist_3='/data/htmlwww/workbench/workbench/gallerycms/house/views/pc/working'
+let g:netrw_dirhist_4='/data/htmlwww/workbench/workbench/gallerycms/house/views/mobile/ask'
+let g:netrw_dirhist_5='/data/htmlwww/acanstudio/commandShell/install'
+let g:netrw_dirhist_6='/data/htmlwww/wangcan/getsource'
+let g:netrw_dirhist_7='/data/htmlwww/acanstudio/commandShell/install'
+let g:netrw_dirhist_8='/Users/wangmu/Desktop/未命名文件夹'
+let g:netrw_dirhist_9='/data/htmlwww/wangcan/vimrc/bak'

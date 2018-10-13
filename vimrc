@@ -188,3 +188,5 @@ nmap <silent> wm :if IsWinManagerVisible() <BAR> WMToggle<CR> <BAR> else <BAR> W
 "nmap <C-W><C-B> :BottomExplorerWindow<cr>  
 "autocmd BufWinEnter \[Buf\ List\] setl nonumber 
 
+vmap <C-x> :!pbcopy<CR>
+vmap <C-c> :w !pbcopy<CR><CR>
