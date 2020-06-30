@@ -86,7 +86,7 @@ set noerrorbells visualbell t_vb=
 set tm=500
 
 " TAB setting
-set noexpandtab    "DO-NOT replace <TAB> with spaces
+set expandtab    "DO-NOT replace <TAB> with spaces
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4

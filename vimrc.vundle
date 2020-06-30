@@ -18,6 +18,7 @@ Bundle 'winmanager'
 Bundle 'https://github.com/Lokaltog/vim-powerline.git'
 Bundle 'taglist.vim'
 
+Bundle 'Chiel92/vim-autoformat'
 " for php
 Bundle 'joonty/vdebug.git'
 
